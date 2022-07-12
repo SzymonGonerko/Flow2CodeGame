@@ -2,6 +2,7 @@ import React, {createContext, useState} from 'react';
 import { Canvas } from '@react-three/fiber'
 import {OrbitControls, Plane, Stars } from '@react-three/drei'
 import { Player } from './components/Player';
+import { UserController } from './components/UserController';
 
 import './App.css';
 
@@ -30,6 +31,7 @@ const App : React.FC = () => {
           </mesh>
         </group>
         <OrbitControls makeDefault enabled={false} />
+        <UserController/>
       </AppContext.Provider>
       </Canvas>
     </>
