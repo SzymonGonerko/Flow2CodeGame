@@ -1,9 +1,17 @@
+import { Canvas } from '@react-three/fiber'
+import {OrbitControls, Environment, Plane } from '@react-three/drei'
+
 import './App.css';
 
-function App() {
+const App : React.FC = () => {
   return (
-    <div className="App">
-    </div>
+    <>
+      <Canvas >
+        <Plane args={[2, 2]} rotation={[-Math.PI / 2, 0, 0]} />
+        <Environment preset="night" background />
+        <OrbitControls enabled={true} />
+      </Canvas>
+    </>
   );
 }
 
