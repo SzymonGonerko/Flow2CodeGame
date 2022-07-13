@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import {OrbitControls, Plane, Stars } from '@react-three/drei'
 import { Player } from './components/Player';
 import { UserController } from './components/UserController';
+import { Physics } from '@react-three/cannon';
 
 import './App.css';
 
@@ -17,8 +18,13 @@ const App : React.FC = () => {
 
   return (
     <>
-      <Canvas>
+      <Canvas shadows gl={{ alpha: false }}  camera={{ fov: 50 }}>
       <AppContext.Provider value={{state, setState}}>
+      <Physics 
+        tolerance={0}
+        iterations={50}
+        gravity={[0, -9.86, 0]}>
+
         <Plane position={[0, -2.5, 0]} args={[500, 500]} rotation={[-Math.PI / 2, 0, 0]} />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={1} fade speed={1} />
         <color attach="background" args={['#040811']} />
@@ -32,6 +38,7 @@ const App : React.FC = () => {
         </group>
         <OrbitControls makeDefault enabled={false} />
         <UserController/>
+        </Physics>
       </AppContext.Provider>
       </Canvas>
     </>
