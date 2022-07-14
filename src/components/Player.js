@@ -28,7 +28,7 @@ export const Player = () => {
             forward: [camera.getWorldDirection(rotation).multiplyScalar(state.Power).x, camera.getWorldDirection(rotation).multiplyScalar(state.Power).y, camera.getWorldDirection(rotation).multiplyScalar(state.Power).z]
           }
         ]);
-        setState(prev => ({...prev, shot: false}))
+        setState(prev => ({...prev, shot: false, start: true}))
     }
 
 
