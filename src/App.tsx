@@ -1,8 +1,12 @@
 import React, {createContext, useState} from 'react';
 import { Canvas } from '@react-three/fiber'
-import {OrbitControls, Plane, Stars } from '@react-three/drei'
+import {OrbitControls, Stars } from '@react-three/drei'
 import { Player } from './components/Player';
 import { UserController } from './components/UserController';
+import { Physics } from '@react-three/cannon';
+import { Plane } from "./components/Plane"
+import { Box } from "./components/Box"
+import { GroupBox } from './components/GroupBox';
 
 import './App.css';
 
@@ -10,28 +14,33 @@ import './App.css';
 export const AppContext = createContext({})
 
 const App : React.FC = () => {
-  const [state, setState] = useState<{init: boolean, position: undefined | number}>({
+  const [state, setState] = useState<{init: boolean, position: undefined | number, shot: boolean, Power: number}>({
     init: true,
-    position: undefined
+    position: undefined,
+    Power: 1,
+    shot: false
   })
 
   return (
     <>
-      <Canvas>
+      <Canvas shadows gl={{ alpha: false }}  camera={{ fov: 50 }}>
       <AppContext.Provider value={{state, setState}}>
-        <Plane position={[0, -2.5, 0]} args={[500, 500]} rotation={[-Math.PI / 2, 0, 0]} />
+      <Physics 
+        tolerance={0}
+        iterations={50}
+        gravity={[0, -9.86, 0]}>
+
+        <Plane/>
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={1} fade speed={1} />
         <color attach="background" args={['#040811']} />
         <ambientLight intensity={1}/>
         <Player/>
-        <group position={[2,-2,0]}>
-          <mesh castShadow>
-              <boxBufferGeometry args={[0.5, 0.5, 0.5]} />
-              <meshLambertMaterial color={"red"} />
-          </mesh>
-        </group>
+
+        <GroupBox/>
+
         <OrbitControls makeDefault enabled={false} />
         <UserController/>
+        </Physics>
       </AppContext.Provider>
       </Canvas>
     </>
