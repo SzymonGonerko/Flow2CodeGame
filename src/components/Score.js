@@ -7,6 +7,11 @@ const initialStyles = {
     color: "blue",
   };
 
+  const scoreStyles = {
+    ...initialStyles,
+    color: "green",
+  };
+
 export const Score = () => {
     const {state, setState} = useContext(AppContext)
 
@@ -15,6 +20,7 @@ export const Score = () => {
         <Text {...initialStyles} text={"Destroyed: " + (state.destroyed) + "/21"} rotation={[0, 0.3, 0]} position={[-10, 7, -20]}/>
         <Text {...initialStyles} text={"Missed:"} rotation={[0, 0.3, 0]} position={[-12.1, 5.5, -20]}/>
         <Text color={(state.missed === 0 ? "white": "red")} fontSize={1} text={state.missed} rotation={[0, 0.3, 0]} position={[-9, 5.3, -20]}/>
+        {state.destroyed === 21 && <Text {...scoreStyles} text={"Score: " + (state.destroyed - state.missed)} rotation={[0, 0.3, 0]} position={[-11.7, 4, -20]}/>}
     </group>
     </>)
 }
