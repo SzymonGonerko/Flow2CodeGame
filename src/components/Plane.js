@@ -21,7 +21,7 @@ export const Plane = (props) => {
   return (
     <mesh ref={ref} receiveShadow>
       <planeGeometry args={[500, 500]} />
-      <meshStandardMaterial map={texture} roughness={0.5} map-repeat={[50, 50]}  />
+      <meshStandardMaterial map={texture} roughness={1} map-repeat={[50, 50]}  />
     </mesh>
   )
 }

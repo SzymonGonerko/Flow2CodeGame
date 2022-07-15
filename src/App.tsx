@@ -38,7 +38,7 @@ const App : React.FC = () => {
         <Plane/>
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={1} fade speed={1} />
         <color attach="background" args={['#040811']} />
-        <ambientLight intensity={1}/>
+        <ambientLight intensity={0.9}/>
         <Logo/>
         <Player/>
 
