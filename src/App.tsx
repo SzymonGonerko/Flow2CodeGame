@@ -7,6 +7,7 @@ import { Physics } from '@react-three/cannon';
 import { Plane } from "./components/Plane"
 import { Box } from "./components/Box"
 import { GroupBox } from './components/GroupBox';
+import { Score } from './components/Score';
 
 import './App.css';
 
@@ -14,11 +15,14 @@ import './App.css';
 export const AppContext = createContext({})
 
 const App : React.FC = () => {
-  const [state, setState] = useState<{init: boolean, position: undefined | number, shot: boolean, Power: number}>({
+  const [state, setState] = useState<{init: boolean, position: undefined | number, shot: boolean, Power: number, destroyed: number, start: boolean, missed: number}>({
     init: true,
     position: undefined,
     Power: 1,
-    shot: false
+    shot: false,
+    destroyed: 0,
+    start: false,
+    missed: 0,
   })
 
   return (
@@ -37,6 +41,8 @@ const App : React.FC = () => {
         <Player/>
 
         <GroupBox/>
+
+        <Score/>
 
         <OrbitControls makeDefault enabled={false} />
         <UserController/>
