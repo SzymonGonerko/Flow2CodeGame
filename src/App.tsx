@@ -15,13 +15,14 @@ import './App.css';
 export const AppContext = createContext({})
 
 const App : React.FC = () => {
-  const [state, setState] = useState<{init: boolean, position: undefined | number, shot: boolean, Power: number, destroyed: number, start: boolean}>({
+  const [state, setState] = useState<{init: boolean, position: undefined | number, shot: boolean, Power: number, destroyed: number, start: boolean, missed: number}>({
     init: true,
     position: undefined,
     Power: 1,
     shot: false,
     destroyed: 0,
     start: false,
+    missed: 0,
   })
 
   return (

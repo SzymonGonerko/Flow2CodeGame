@@ -13,6 +13,8 @@ export const Score = () => {
     return (<>
     <group position={[0, 1, 0]}>
         <Text {...initialStyles} text={"Destroyed: " + (state.destroyed) + "/21"} rotation={[0, 0.3, 0]} position={[-10, 7, -20]}/>
+        <Text {...initialStyles} text={"Missed:"} rotation={[0, 0.3, 0]} position={[-12.1, 5.5, -20]}/>
+        <Text color={(state.missed === 0 ? "white": "red")} fontSize={1} text={state.missed} rotation={[0, 0.3, 0]} position={[-9, 5.3, -20]}/>
     </group>
     </>)
 }
