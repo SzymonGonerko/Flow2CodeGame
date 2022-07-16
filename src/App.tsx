@@ -9,6 +9,7 @@ import { Box } from "./components/Box"
 import { GroupBox } from './components/GroupBox';
 import { Score } from './components/Score';
 import { Logo } from "./components/Logo/Logo"
+import { MagicBox } from './components/MagicBox';
 
 import './App.css';
 
@@ -43,6 +44,7 @@ const App : React.FC = () => {
         <Player/>
 
         <GroupBox/>
+        <MagicBox/>
 
         <Score/>
 
