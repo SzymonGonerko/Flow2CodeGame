@@ -28,12 +28,12 @@ export const Loader: React.FC = () => {
   const [start, setStart] = useState<boolean>(false)
 
   const handleEnter = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const button = e.target as HTMLInputElement
+    const button = e.target as HTMLButtonElement
     button.style.backgroundColor = "#00a0d370"
   }
 
   const handleLeave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const button = e.target as HTMLInputElement
+    const button = e.target as HTMLButtonElement
     button.style.backgroundColor = "white"
   }
 
