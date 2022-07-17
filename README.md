@@ -41,15 +41,15 @@ Oferta i wytyczne projektu były w języku polskim zatem postanowiłem sporządz
 
 # Lista NPM
 
-├── @react-three/cannon@6.3.0
-├── @types/node@16.11.43
-├── @types/react-dom@18.0.6
-├── @types/react@18.0.15
-├── @types/styled-components@5.1.25
-├── @types/three@0.141.0
-├── leva@0.9.29
-├── react-dom@18.2.0
-├── react-scripts@5.0.1
-├── react@18.2.0
-├── typescript@4.7.4
-└── web-vitals@2.1.4
+ - @react-three/cannon@6.3.0
+ - @types/node@16.11.43
+ - @types/react-dom@18.0.6
+ - @types/react@18.0.15
+ - @types/styled-components@5.1.25
+ - @types/three@0.141.0
+ - leva@0.9.29
+ - react-dom@18.2.0
+ - react-scripts@5.0.1
+ - react@18.2.0
+ - typescript@4.7.4
+ - web-vitals@2.1.4
