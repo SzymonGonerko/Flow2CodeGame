@@ -7,33 +7,40 @@ export const Box = (props) => {
   const {state, setState} = useContext(AppContext)
   const [initParams, setInitParams] = useState({x: 0, y: 0, z: 0, thisOne: true})
 
-  const [cubeRef] = useBox(() => ({
+  const [cubeRef, api] = useBox(() => ({
     type: "Dynamic",
-    mass: 100,
+    mass: 200,
     args: [1, 1, 1],
     material: {
-      friction: 1,
+      friction: 40,
       restitution: 0
     },
     ...props
   }));
 
 
-  const color = useMemo(() => (
-    '#' + Math.floor(Math.random() * (256 * 256 * 256)).toString(16).padStart(6, '0'))
-    ,[]);
+  const color = useMemo(() => '#' + Math.floor(Math.random() * (256 * 256 * 256)).toString(16).padStart(6, '0'),[]);
 
 
     useEffect(() => {
-      setTimeout(() => {
+      const id = setTimeout(() => {
         const initX = cubeRef?.current?.matrix.elements[12].toFixed(1)
         const initY = cubeRef?.current?.matrix.elements[13].toFixed(1)
         const initZ = cubeRef?.current?.matrix.elements[14].toFixed(1)
-        setInitParams({x: initX, y: initY, z: initZ, thisOne: true})
-      }, 1500)
-    }, [])
+        setInitParams({x: initX, y: initY, z: initZ, thisOne: true, pos: cubeRef.current.position})
+      }, 500)
+
+      return () => clearTimeout(id)
+    }, [state.reset])
     
         useFrame(() => {
+          if (state.reset) {
+            api.velocity.set(0, 0, 0)
+            api.rotation.set(0, 0, 0)
+            api.position.set(initParams.pos.x, initParams.pos.y, initParams.pos.z)
+
+            setState(prev => ({...prev, reset: false, missed: 0, destroyed: 0, divisions: {first: [], second: []}}))
+          }
           if (!state.start) return
     
           const currX = cubeRef.current.matrix.elements[12].toFixed(1)
@@ -41,10 +48,23 @@ export const Box = (props) => {
           const currZ = cubeRef.current.matrix.elements[14].toFixed(1)
     
           if (currX !== initParams.x && currY !== initParams.y && currZ !== initParams.z && initParams.thisOne) {
-            setState(prev => ({...prev, destroyed: prev.destroyed + 1}))
+            if (props.division === "first") {
+              setState(prev => (
+                {...prev, 
+                destroyed: prev.destroyed + 1,
+                divisions: {first: [...prev.divisions.first, true], second: [...prev.divisions.second]}
+                })
+              )
+            }
+            if (props.division === "second") {
+              setState(prev => (
+                {...prev, 
+                destroyed: prev.destroyed + 1,
+                divisions: {first: [...prev.divisions.first], second: [...prev.divisions.second, true]}
+                }))
+            }
             setInitParams(prev => ({...prev, thisOne: false}))
           }
-          
         })
 
 
@@ -54,5 +74,5 @@ export const Box = (props) => {
       <boxBufferGeometry args={[1, 1, 1]} />
       <meshLambertMaterial color={color} />
     </mesh>
-  );
-};
+  )
+}

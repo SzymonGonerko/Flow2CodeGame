@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useFrame } from '@react-three/fiber'
 import {AppContext} from "../App";
 
 export const Ball = (props) => {
-  const {state, setState} = useContext(AppContext)
+  const {setState} = useContext(AppContext)
   const [sphereRef] = useSphere(() => ({
-    mass: 150,
+    mass: 250,
     args: [0.3, 0.3, 0.3],
     type: "Dynamic",
     onCollide: (e) => collide(e),
     material: {
-      friction: 1,
+      friction: 40,
     },
     ...props
-  }));
+  }))
 
 
   const collides = []
@@ -23,11 +23,13 @@ export const Ball = (props) => {
     if (isTheSame && e.body.receiveShadow) return
     collides.push([!e.body.receiveShadow, e.target.id])
     if (!isTheSame) {
-      setTimeout(() => {
+      const id = setTimeout(() => {
         const isMissed = collides.every(el => el[0] === false)
         if (isMissed) setState(prev => ({...prev, missed: prev.missed + 1}))
       }, 3000)
+      return () => clearTimeout(id)
     }
+    
   }
 
   useFrame(() => {
@@ -39,12 +41,7 @@ export const Ball = (props) => {
         sphereRef.current.material.color.setHex(0x070807)
       }
     }
-
   })
-
-
-
-// console.log(sphereRef?.current)
 
 
   return (
@@ -52,5 +49,5 @@ export const Ball = (props) => {
       <sphereBufferGeometry args={[0.3, 32, 32]} />
       <meshLambertMaterial color={"red"} />
     </mesh>
-  );
-};
+  )
+}

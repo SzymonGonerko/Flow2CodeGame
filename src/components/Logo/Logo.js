@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Vector3 } from 'three'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
