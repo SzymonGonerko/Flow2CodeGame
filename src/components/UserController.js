@@ -13,7 +13,7 @@ export const UserController = () => {
     const { horizontal, vertical, power, zoom, player } = useControls({
       player: state.player,
       horizontal: { value: Math.PI / 2, min: 0, max: Math.PI / 2 },
-      vertical: { value: Math.PI / 2, min: 1.2, max: 2 },
+      vertical: { value: Math.PI / 2, min: 1.2, max: 1.95 },
       power: { value: 30, min: 20, max: 70 },
       zoom: { value: 1, min: 1, max: 2 },
       Action: folder({

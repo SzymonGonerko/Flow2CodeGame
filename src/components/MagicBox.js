@@ -16,7 +16,7 @@ export const MagicBox = () => {
     <group position={[-20, -2, -20]}>
         {state.destroyed !== 21 && 
             <>
-                <Html rotation={[0, 1, 0]} position={[2.5, 3, 2]} transform>
+                <Html zIndexRange={-1} rotation={[0, 1, 0]} position={[2.5, 3, 2]} transform>
                     <div style={initialStyles}>
                     I'll open
                     </div>
