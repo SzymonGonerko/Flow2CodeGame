@@ -3,9 +3,9 @@
 
 https://flow2codegame.netlify.app/
 
-![Flow2CodeGame]()
+![Flow2CodeGame](https://github.com/SzymonGonerko/Game-for-flow2Code/blob/e99e9962a70ce4120275d410f5b63c35403bd7b8/src/screenshot.jpg)
 
-Oferta i wytyczne projektu były w języku polskim zatem postanowiłem sporządzić dokumentację w tym języku. Głównym celem projektu jest stworzenie gry polegającej na trafieniu pociskiem wystrzelonym z armaty w ścianę ułożoną z sześciennych obiektów (kostek). Jeżeli gracz zburzy układ, to zostaje nagrodzony. Każda zmiana położenia kostki w macierzy matrixa oznacza 1 punkt dla gracza. Jeżeli gracz trafi w ścianę ale nie zmieni pozycji żadnej kostki, to nic się nie dzieje. Jeżeli gracz nie trafi w żadną kostkę (tym samym w ścianę), to traci 1 punkt. Każda z 2 ścian jest postawiona na podświetlonym polu. Kolor czerwony pola oznacza, że nie wszystkie (lub żadna) kostka/i nie zmieniły/a swojego położenia. Kolor zielony oznacza, że ściana została kompletnie zburzona. Po zburzeniu obydwu ścian, wyświetla się informacja o wyniku gracza, a także uruchamia się finałowa animacja. W trakcie jej trwania lub po jej zakończenia można zresetować grę do stanu początkowego.
+Oferta i wytyczne projektu były w języku polskim zatem postanowiłem sporządzić dokumentację w tym języku. Głównym celem projektu jest stworzenie gry polegającej na trafieniu pociskiem wystrzelonym z armaty w ścianę ułożoną z sześciennych obiektów (kostek). Jeżeli gracz zburzy układ, to zostaje nagrodzony. Każda zmiana położenia kostki w macierzy matrixa oznacza 1 punkt dla gracza. Jeżeli gracz trafi w ścianę ale nie zmieni pozycji żadnej kostki, to nic się nie dzieje. Jeżeli gracz nie trafi w żadną kostkę (tym samym w ścianę), to traci 1 punkt. Każda z 2 ścian jest postawiona na podświetlonym polu. Kolor czerwony pola oznacza, że nie wszystkie (lub żadna) kostka/i nie zmieniły/a swojego położenia. Kolor zielony oznacza, że ściana została kompletnie zburzona. Po zburzeniu obydwu ścian, wyświetla się informacja o wyniku gracza, a także uruchamia się finałowa animacja. W trakcie jej trwania lub po jej zakończenia można zresetować grę do stanu początkowego. Miłego grania !
 
 # Wytyczne
 
