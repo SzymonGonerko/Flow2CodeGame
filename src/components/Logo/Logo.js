@@ -63,7 +63,7 @@ export const Logo = () => {
 
 
 return <>
-<group scale={correctScale} position={[-22.99, 4, 1]} rotation={[0, 1.6, 0]}>
+<group scale={correctScale} position={[-22.99, 4, 1]} rotation={[0, 1.58, 0]}>
     
     <Flow2Code/>
 
